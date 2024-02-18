@@ -1,6 +1,6 @@
 # mime.yazi
 
-A [Yazi](https://github.com/sxyazi/yazi) plugin that quickly get mimetype to improved theme rendering speed
+A [Yazi](https://github.com/sxyazi/yazi) plugin that quickly get mime-type to improved theme rendering speed
 
 > [!NOTE]
 > The latest main branch of Yazi is required at the moment.
