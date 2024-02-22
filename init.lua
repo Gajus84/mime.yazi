@@ -1454,7 +1454,7 @@ function M:preload()
 
 		if mime and string.find(line, mime, 1, true) ~= 1 then
 			goto continue
-		elseif mime and ya.mime_valid(mime) then		
+		elseif mime then		
 			mimes[unmatch_ext_urls[i]] = mime
 		i = i + 1
 		end
