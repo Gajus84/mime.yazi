@@ -1,6 +1,7 @@
 local M = {}
 
 local ext_mime_map = {
+	["dsf"] = "audio/x-dsf",
 	["a2l"] = "application/A2L",
 	["aml"] = "application/AML",
 	["ez"] = "application/andrew-inset",
