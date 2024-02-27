@@ -1407,10 +1407,12 @@ local ext_mime_map = {
 	["sisx"] = "x-epoc/x-sisx-app",
 }
 
+local SUPPORTED_TYPES = "application/audio/biosig/chemical/font/image/inode/message/model/rinex/text/vector/video/x-epoc/"
+
 local function match_mimetype(s)
-	local type, subtype = s:match("([-a-z]+/)([+-.a-zA-Z0-9]+)%s*$")
-	if string.find("application/audio/biosig/chemical/font/image/inode/message/model/rinex/text/vector/video/x-epoc/", type, 1, true) then
-		return type .. subtype
+	local type, sub = s:match("([-a-z]+/)([+-.a-zA-Z0-9]+)%s*$")
+	if type and sub and string.find(SUPPORTED_TYPES, type, 1, true) then
+		return type .. sub
 	end
 end
 
