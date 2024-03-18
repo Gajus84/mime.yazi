@@ -1438,7 +1438,8 @@ function M:preload()
 	
 
 	if #unmatch_ext_urls then
-	  local command = Command("file"):arg("--mime-type"):stdout(Command.PIPED):stderr(Command.PIPED)
+		local file_one_path = os.getenv("YAZI_FILE_ONE") or "file"
+	  local command = Command(file_one_path):arg("--mime-type"):stdout(Command.PIPED):stderr(Command.PIPED)
 	  if ya.target_family() == "windows" then
 		command:arg("-b")
 	  else
