@@ -1417,13 +1417,13 @@ local function match_mimetype(s)
 	end
 end
 
-function M:preload()		
+function M:prefetch()
 	local mimes = {}
 	local unmatch_ext_urls = {}
-  
+
 	for _, file in ipairs(self.files) do
 	  local url = tostring(file.url)
-  
+
 	  local ext = tostring(file.name):match("^.+%.(.+)$")
 	  if ext then
 		ext = ext:lower()
@@ -1436,7 +1436,7 @@ function M:preload()
 	  unmatch_ext_urls[#unmatch_ext_urls + 1] = url
 	  ::continue::
 	end
-	
+
 
 	if #unmatch_ext_urls then
 		local file_one_path = os.getenv("YAZI_FILE_ONE") or "file"
@@ -1446,7 +1446,7 @@ function M:preload()
 	  else
 		command:arg("-bL")
 	  end
-  
+
 	  local i = 1
 	  local mime
 	  local output = command:args(unmatch_ext_urls):output()
@@ -1459,14 +1459,14 @@ function M:preload()
 
 		if mime and string.find(line, mime, 1, true) ~= 1 then
 			goto continue
-		elseif mime then		
+		elseif mime then
 			mimes[unmatch_ext_urls[i]] = mime
 		i = i + 1
 		end
 		::continue::
 	  end
 	end
-  
+
 	if #mimes then
 	  ya.manager_emit("update_mimetype", { updates = mimes })
 	  return 3
