@@ -1417,7 +1417,7 @@ local function match_mimetype(s)
 	end
 end
 
-function M:prefetch()
+function M:fetch()
 	local mimes = {}
 	local unmatch_ext_urls = {}
 
